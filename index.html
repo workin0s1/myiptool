@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="IP Address Finder Tool - Find Your Public IP Address Instantly">
+    <meta name="description" content="Discover your public IP address instantly with our free IP Address Finder tool. Fast, accurate, and easy to use. Find your IP location and network information.">
+    <meta name="keywords" content="IP address finder, public IP, IP lookup, what is my IP, IP address tool">
+    <title>IP Address Finder Tool - Find Your Public IP Address</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .ip-display {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .sticky-footer {
+            position: sticky;
+            bottom: 0;
+            z-index: 50;
+        }
+        .ad-slot {
+            min-height: 250px;
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-weight: bold;
+        }
+        .section-padding {
+            scroll-margin-top: 80px;
+        }
+        @media (max-width: 768px) {
+            .ip-display {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-6 shadow-lg">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-2">
+                <i class="fas fa-globe-americas mr-3"></i>
+                IP Address Finder Tool
+            </h1>
+            <p class="text-lg opacity-90">Discover your public IP address instantly</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- IP Finder Section -->
+        <section class="bg-white rounded-lg shadow-xl p-8 mb-8 text-center">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Your Public IP Address</h2>
+            
+            <div id="ip-container" class="mb-6">
+                <div id="loading" class="flex items-center justify-center">
+                    <i class="fas fa-spinner loading-spinner text-4xl text-blue-500 mr-3"></i>
+                    <span class="text-xl text-gray-600">Finding your IP address...</span>
+                </div>
+                
+                <div id="ip-result" class="hidden">
+                    <div class="ip-display font-bold text-blue-600 mb-4" id="ip-address"></div>
+                    <button onclick="refreshIP()" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg transition duration-300">
+                        <i class="fas fa-sync-alt mr-2"></i>Refresh IP
+                    </button>
+                </div>
+                
+                <div id="error-result" class="hidden">
+                    <div class="text-red-600 text-xl mb-4">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>
+                        Unable to fetch IP address
+                    </div>
+                    <button onclick="refreshIP()" class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg transition duration-300">
+                        <i class="fas fa-redo mr-2"></i>Try Again
+                    </button>
+                </div>
+            </div>
+
+            <div class="text-sm text-gray-600">
+                <p><i class="fas fa-info-circle mr-2"></i>This tool shows your public IP address as seen by external websites</p>
+            </div>
+        </section>
+
+        <!-- Ad Slot 1 - Adsterra -->
+        <section class="mb-8">
+            <div class="ad-slot rounded-lg">
+                <div class="text-center">
+                    <i class="fas fa-ad text-2xl mb-2"></i>
+                    <p>Adsterra Ad Slot</p>
+                    <p class="text-sm opacity-75">(Advertisement space)</p>
+                </div>
+            </div>
+            <!-- Placeholder for Adsterra Ad Script -->
+            <script type="text/javascript">
+                // Adsterra ad script would go here
+                // Example: atOptions = { 'key' : 'your-adsterra-key', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
+            </script>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="section-padding bg-white rounded-lg shadow-xl p-8 mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">
+                <i class="fas fa-users mr-3 text-blue-600"></i>About Us
+            </h2>
+            <div class="prose max-w-none text-gray-700 leading-relaxed">
+                <p class="mb-4">
+                    Welcome to IP Address Finder Tool, your trusted source for quickly and accurately discovering your public IP address. Our mission is to provide internet users with simple, reliable, and fast tools to understand their online presence and network configuration.
+                </p>
+                <p class="mb-4">
+                    Since our inception, we have been committed to delivering high-quality web tools that are completely free to use. Our IP Address Finder tool utilizes advanced APIs to ensure you get the most accurate and up-to-date information about your internet connection.
+                </p>
+                <p class="mb-4">
+                    Whether you're a network administrator, web developer, or simply curious about your internet connection, our tool provides instant results without requiring any software downloads or complex setup procedures.
+                </p>
+                <div class="bg-blue-50 p-4 rounded-lg mt-6">
+                    <h3 class="font-semibold text-blue-800 mb-2">Why Choose Our Tool?</h3>
+                    <ul class="list-disc list-inside text-blue-700 space-y-1">
+                        <li>Instant results with no waiting time</li>
+                        <li>100% free to use with no registration required</li>
+                        <li>Mobile-friendly responsive design</li>
+                        <li>Secure and privacy-focused approach</li>
+                        <li>Reliable API integration for accurate results</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ad Slot 2 - PropellerAds -->
+        <section class="mb-8">
+            <div class="ad-slot rounded-lg">
+                <div class="text-center">
+                    <i class="fas fa-ad text-2xl mb-2"></i>
+                    <p>PropellerAds Ad Slot</p>
+                    <p class="text-sm opacity-75">(Advertisement space)</p>
+                </div>
+            </div>
+            <!-- Placeholder for PropellerAds Script -->
+            <script type="text/javascript">
+                // PropellerAds script would go here
+                // Example: (function(d,z,s){s.src='//'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('your-domain.com',your-zone-id,document.createElement('script'));
+            </script>
+        </section>
+
+        <!-- Privacy Policy Section -->
+        <section id="privacy" class="section-padding bg-white rounded-lg shadow-xl p-8 mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">
+                <i class="fas fa-shield-alt mr-3 text-green-600"></i>Privacy Policy
+            </h2>
+            <div class="prose max-w-none text-gray-700 leading-relaxed">
+                <p class="mb-4">
+                    <strong>Last updated:</strong> <span class="text-blue-600">[Current Date]</span>
+                </p>
+                
+                <h3 class="text-xl font-semibold mb-3 text-gray-800">Information Collection and Use</h3>
+                <p class="mb-4">
+                    Our IP Address Finder Tool is designed with privacy in mind. We do not collect, store, or track any personally identifiable information from our users. The tool simply displays your public IP address as it appears to external websites.
+                </p>
+
+                <h3 class="text-xl font-semibold mb-3 text-gray-800">Data Processing</h3>
+                <p class="mb-4">
+                    When you use our IP Address Finder tool, your browser makes a request to a third-party API service (api.ipify.org) to retrieve your public IP address. This process is handled entirely on your device, and we do not intercept or store this information.
+                </p>
+
+                <h3 class="text-xl font-semibold mb-3 text-gray-800">Third-Party Services</h3>
+                <p class="mb-4">
+                    Our website may contain advertisements from third-party advertising networks such as Adsterra and PropellerAds. These services may use cookies and similar technologies to serve relevant advertisements. We recommend reviewing their respective privacy policies for more information about their data practices.
+                </p>
+
+                <h3 class="text-xl font-semibold mb-3 text-gray-800">Cookies and Tracking</h3>
+                <p class="mb-4">
+                    Our website does not use cookies for tracking purposes. However, third-party advertising services may use cookies to personalize advertisements. You can disable cookies in your browser settings if you prefer.
+                </p>
+
+                <h3 class="text-xl font-semibold mb-3 text-gray-800">Contact Information</h3>
+                <p class="mb-4">
+                    If you have any questions about this Privacy Policy or our practices, please feel free to contact us through the information provided on our website.
+                </p>
+
+                <div class="bg-green-50 p-4 rounded-lg mt-6">
+                    <h3 class="font-semibold text-green-800 mb-2">Your Privacy Rights</h3>
+                    <ul class="list-disc list-inside text-green-700 space-y-1">
+                        <li>No personal data collection or storage</li>
+                        <li>No user registration or account creation required</li>
+                        <li>No tracking across websites or sessions</li>
+                        <li>Complete anonymity while using our tool</li>
+                        <li>Right to use our service without data sharing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer bg-gray-800 text-white py-4 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-2 md:mb-0">
+                    <p class="text-sm">&copy; 2024 IP Address Finder Tool. All rights reserved.</p>
+                </div>
+                <nav class="flex space-x-6">
+                    <a href="#about" class="text-sm hover:text-blue-300 transition duration-300">
+                        <i class="fas fa-info-circle mr-1"></i>About Us
+                    </a>
+                    <a href="#privacy" class="text-sm hover:text-blue-300 transition duration-300">
+                        <i class="fas fa-shield-alt mr-1"></i>Privacy Policy
+                    </a>
+                    <a href="#" onclick="scrollToTop()" class="text-sm hover:text-blue-300 transition duration-300">
+                        <i class="fas fa-arrow-up mr-1"></i>Back to Top
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Function to fetch IP address
+        async function fetchIPAddress() {
+            const loadingEl = document.getElementById('loading');
+            const resultEl = document.getElementById('ip-result');
+            const errorEl = document.getElementById('error-result');
+            const ipEl = document.getElementById('ip-address');
+
+            // Show loading state
+            loadingEl.classList.remove('hidden');
+            resultEl.classList.add('hidden');
+            errorEl.classList.add('hidden');
+
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                
+                // Display IP address
+                ipEl.textContent = data.ip;
+                loadingEl.classList.add('hidden');
+                resultEl.classList.remove('hidden');
+                
+            } catch (error) {
+                console.error('Error fetching IP address:', error);
+                loadingEl.classList.add('hidden');
+                errorEl.classList.remove('hidden');
+            }
+        }
+
+        // Function to refresh IP address
+        function refreshIP() {
+            fetchIPAddress();
+        }
+
+        // Function to scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize IP address fetch when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchIPAddress();
+        });
+
+        // Add some interactivity for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to buttons
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
